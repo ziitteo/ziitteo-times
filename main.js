@@ -99,18 +99,27 @@ closeBtn.addEventListener('click', () => {
 });
 
 
-// API 호출을 위한 URL 객체 생성 함수
-const createURL = (params = {}, params2 = {}, params3 = {}) => {
-    // 파라미터를 하나의 객체로 병합
-    const mergedParams = { ...params, ...params2, ...params3 };
+// API 호출을 위한 URL 객체 생성 함수 newsAPI 테스트용
+// const createURL = (params = {}, params2 = {}, params3 = {}) => {
+//   const mergedParams = { ...params, ...params2, ...params3, country: 'kr', apiKey: API_KEY };
+//   const urlParams = new URLSearchParams(mergedParams).toString();
+//   const url = new URL (
+//     `https://newsapi.org/v2/top-headlines?${urlParams}`
+//   );
 
-    // API 호출을 위한 URL 객체 생성
-    const url = new URL(
-      `https://ziitteo-times.netlify.app/top-headlines?` + new URLSearchParams(mergedParams).toString()
-    );
-  // fetchNews 함수 호출
+//   fetchNews(url);
+// };
+
+// API 호출을 위한 URL 객체 생성 함수 누나 뉴스 API 배포용
+const createURL = (params = {}, params2 = {}, params3 = {}) => {
+  const mergedParams = { ...params, ...params2, ...params3 };
+  const urlParams = new URLSearchParams(mergedParams).toString();
+  const url = new URL (
+    `https://ziitteo-times.netlify.app/top-headlines?${urlParams}`
+  );
+
   fetchNews(url);
-}
+};
 
 // API 호출 및 응답 데이터 처리 후 화면에 뉴스를 렌더링하는 함수
 const fetchNews = async (url) => {
@@ -266,13 +275,22 @@ const paginationRender = () => {
   }
 
   // firstPage 첫 페이지
-  const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
- 
+  let firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+
+  // 마지막 페이지가 그룹사이즈로 나누어 떨어지지 않는 경우
+  if ( lastPage % groupSize !== 0) {
+    if (lastPage <= 4) {
+      firstPage = 1;
+    } else {
+      firstPage = lastPage - (groupSize - 1);
+    }
+  }
+
   let paginationHTML = ``;
 
   if (page > 1) { 
     paginationHTML += ` 
-      <li class="my-page-item center" onClick="moveToPage(${1})">
+      <li class="page-item center" onClick="moveToPage(${1})">
         <a class="page-link center" href="#" aria-label="Previous">
           <span aria-hidden="true"><i class="fas fa-solid fa-angles-left"></i></span>
         </a>
