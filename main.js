@@ -275,16 +275,10 @@ const paginationRender = () => {
   }
 
   // firstPage 첫 페이지
-  let firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
-
-  // 마지막 페이지가 그룹사이즈로 나누어 떨어지지 않는 경우
-  if ( lastPage % groupSize !== 0) {
-    if (lastPage <= 4) {
-      firstPage = 1;
-    } else {
-      firstPage = lastPage - (groupSize - 1);
-    }
-  }
+  // firstPage 첫 페이지 계산
+let firstPage = (lastPage - (groupSize - 1) <= 0 || (lastPage % groupSize !== 0 && lastPage > 4)) 
+              ? 1 
+              : lastPage - (groupSize - 1);
 
   let paginationHTML = ``;
 
