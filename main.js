@@ -149,7 +149,7 @@ const fetchNews = async (url) => {
 // 최신 뉴스를 가져오는 비동기 함수
 const getLatesNews = async () => {
   //URL 객체 생성 함수 호출
-  createURL();
+  await createURL();
 }
 
 // 카테고리별 뉴스를 가져오는 비동기 함수
@@ -161,7 +161,7 @@ const getCategoryNews = async (event) => {
   // 페이지 초기화
   page = 1;
   //URL 객체 생성 함수 호출
-  createURL({ category });
+  await createURL({ category });
 }
 
 // 키워드로 뉴스를 검색하는 비동기 함수
@@ -175,7 +175,7 @@ const getKeywordNews = async () => {
   // 페이지 초기화
   page = 1;
   //URL 객체 생성 함수 호출
-  createURL({ q: keyWord });
+  await createURL({ q: keyWord });
 }
 
 // 중복된 뉴스를 제거하는 함수
