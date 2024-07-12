@@ -25,6 +25,11 @@ const menus = document.querySelectorAll('.menus button');
 // 각 메뉴 버튼에 클릭 이벤트 리스너를 추가
 // 클릭 이벤트가 발생하면 getCategoryNews 함수를 호출
 menus.forEach((menu) => menu.addEventListener('click', (event) => {
+
+  // 선택된 카테고리에 acitve 클래스 추가 및 다른 카테고리에서 active 클래스 제거
+  menus.forEach((menu) => menu.classList.remove('active'));
+  event.target.classList.add('active');
+
   if (window.innerWidth <= 1000) {
     getCategoryNews(event);
     menuBox.classList.remove('show');

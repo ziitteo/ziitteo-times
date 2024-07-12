@@ -105,7 +105,8 @@ a:active {
   margin-right: 20px;
 }
 
-.menus button:hover {
+.menus button:hover,
+.menus button.active {
   background-color: #000;
   color: #fff;
 }
@@ -232,10 +233,15 @@ a:active {
     width: 250px;
   }
 
+  .menu-wrap .close-btn.show .fa-xmark:hover{
+    background-color: #fff;
+    color: #000;
+  }
+
   .menu-wrap .close-btn.show {
     width: 100%;
     display: flex;
-    padding: 20px 20px 0 0;
+    padding: 40px 40px 0 0;
     justify-content: flex-end;
     font-size: 30px;
     cursor: pointer;
@@ -255,4 +261,9 @@ a:active {
     color: #fff;
   }
 
+  .menus button:hover,
+  .menus button.active {
+    background-color: #fff;
+    color: #000;
+  }
 }
