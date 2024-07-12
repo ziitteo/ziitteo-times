@@ -274,15 +274,14 @@ const paginationRender = () => {
     lastPage = totalPages;
   }
 
-  // firstPage 첫 페이지
   // firstPage 첫 페이지 계산
-let firstPage = (lastPage - (groupSize - 1) <= 0 || (lastPage % groupSize !== 0 && lastPage > 4)) 
+  let firstPage = (lastPage - (groupSize - 1) <= 0 || (lastPage % groupSize !== 0 && lastPage > 4)) 
               ? 1 
               : lastPage - (groupSize - 1);
 
   let paginationHTML = ``;
 
-  if (page > 1) { 
+  if (page > 5 && totalPages > 5) { 
     paginationHTML += ` 
       <li class="page-item center" onClick="moveToPage(${1})">
         <a class="page-link center" href="#" aria-label="Previous">
@@ -305,7 +304,7 @@ let firstPage = (lastPage - (groupSize - 1) <= 0 || (lastPage % groupSize !== 0 
     </li>`;
   }
 
-  if (page < totalPages) {
+  if (page < totalPages && totalPages > 5 ) {
     paginationHTML += ` 
       <li class="page-item center" onClick="moveToPage(${page + 1})">
         <a class="page-link center" href="#" aria-label="Next">
