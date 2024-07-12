@@ -5,6 +5,17 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 .container section{
   margin-top: 1em;
 }
@@ -130,4 +141,118 @@
   text-align: center;
   font-size: 32px;
   font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination:visited,
+.pagination:active {
+  border: none;
+  outline: none;
+}
+
+.page-item {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: #000;
+  border-radius: 50%;
+}
+.page-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.page-link {
+  border: none;
+  color: #000; 
+}
+
+.page-link {
+  width: 32px;
+  height: 32px;
+  padding: 5px 5px;
+  border-radius: 50%;
+}
+
+/* 링크 클리했던 요소 */
+.page-item:visited,
+.page-item .page-link:visited,
+.page-item .page-link:hover,
+.page-item .page-link:active {
+  border: none;
+  outline: none;
+  background: #fff;
+}
+
+.page-item:hover,
+.page-item:active,
+.page-item .page-link:hover,
+.page-item.active .page-link {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 1000px 이하일 때 */
+@media screen and (max-width: 1000px) {
+  .menu-wrap {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 0;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    z-index: 999;
+    overflow: hidden; /* 내용이 넘치지 않도록 */
+    position: fixed; /* 화면에 고정 */
+    left: 0; /* 오른쪽에서 슬라이드 */
+    top: 0;
+    transition: width 0.3s ease; /* 슬라이드 애니메이션 */
+  }
+
+  .menus {
+    border: none;
+  }
+
+  .menu-wrap.show {
+    width: 250px;
+  }
+
+  .menu-wrap .close-btn.show {
+    width: 100%;
+    display: flex;
+    padding: 20px 20px 0 0;
+    justify-content: flex-end;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    background: #000;
+    border: none;
+  }
+
+  .menus button:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .menus button {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+
 }
