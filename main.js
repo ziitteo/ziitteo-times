@@ -281,7 +281,7 @@ const paginationRender = () => {
 
   let paginationHTML = ``;
 
-  if (page > 5 && totalPages > 5) { 
+  if (page > 1) { 
     paginationHTML += ` 
       <li class="page-item center" onClick="moveToPage(${1})">
         <a class="page-link center" href="#" aria-label="Previous">
@@ -304,7 +304,7 @@ const paginationRender = () => {
     </li>`;
   }
 
-  if (page < totalPages && totalPages > 5 ) {
+  if (page < totalPages) {
     paginationHTML += ` 
       <li class="page-item center" onClick="moveToPage(${page + 1})">
         <a class="page-link center" href="#" aria-label="Next">
